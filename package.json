@@ -2,9 +2,12 @@
   "name": "skyfish",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d build",
+    "start": "node build/index.js",
+    "test": "node -r babel-register src/index.js",
+    "clean": "rm -rf build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,9 @@
   },
   "homepage": "https://github.com/shisoAqron/skyfish#readme",
   "dependencies": {
-    "pubnub": "^4.12.0"
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "pubnub": "^4.12.0",
+    "slackbots": "^1.1.0"
   }
 }
