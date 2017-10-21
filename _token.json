@@ -1,0 +1,9 @@
+{
+    "bitflyer" : {
+        "token" : "xxxxxxxxxxxxxx"
+    },
+    "Slack":{
+        "token" : "xxxxxxxxxxxxxxxxxxxxx",
+        "botname" : "btc"
+    }
+}

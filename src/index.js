@@ -45,9 +45,8 @@ if (!isExistFile(token)) {
 */
 
   /*始値・終値・高値・安値は自分でやるしかない？
-データの保持とかどうしようか
+  データの保持とかどうしようか
 */
-
   let ticker_log = []
   let p_ltp = 0
   let ltp = 0
@@ -79,11 +78,11 @@ if (!isExistFile(token)) {
   })
 
   /*選択した細かさに応じて区切りとなる時間のリセットがいる
-15分→０，１５，３０，４５でリセット
-30分→０，３０でリセット
-60分→０でリセット
-そもそもデータをDBにﾊﾞｰｯと取っておいて後でで回すほうが良いのでは？
-*/
+  15分→０，１５，３０，４５でリセット
+  30分→０，３０でリセット
+  60分→０でリセット
+  そもそもデータをDBにﾊﾞｰｯと取っておいて後でで回すほうが良いのでは？
+  */
 
   //最初はltpが０なのでどこでタイマーを作動させるか
   const span = 1//minutes
@@ -96,17 +95,18 @@ if (!isExistFile(token)) {
   setInterval(timer, span * 60 * 1000)
 
   /*リセット
-clearInterval(S_I);
-S_I = setInterval(timer,span*1000);
-*/
+  clearInterval(S_I);
+  S_I = setInterval(timer,span*1000);
+  */
 
   bot.on('start', () => {
     //bot.postMessageToChannel('sandbox', 'btcするで')
   })
 
   bot.on('message', (data) => {
-    /* メッセージに対する動作 自身のメッセージは除く */
-    if (data['username'] == tokenObj.Slack.botname || data['username'] == 'undefined' || data['username'] == 'frog') return
+    console.log(data)
+    if (data['username'] == tokenObj.Slack.botname || data['username'] == 'undefined') return
+    if (data['subtype']  == 'bot_message') return //ほかのbot除けならこっちでいいかも
     if (data['type'] == 'message' && data['text'] != undefined) {
       if (data['text'].match(/値段/)) {
         const params = {
